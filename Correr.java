@@ -2,13 +2,14 @@ public class Correr {
     public static void main(String[] args) {
         Arreglo arr = new Arreglo();
 
-        for (int i = 0; i < 500; i++) {
-            arr.push((int) Math.round(Math.random() * (10000 - (-10000) + 1) + -1000));
+        for (int i = 0; i < 10000; i++) {
+            arr.push((int) Math.round(Math.random() * (10000 - (-10000) + 1) + -10000));
         }
 
         try {
-            System.out.println(
-                    Arreglo.binarySearch(arr, (int) Math.round(Math.random() * (10500 - (-10500) + 1) + -1500)));
+            int num = (int) Math.round(Math.random() * (10005 - (-10005) + 1) + -10005);
+            System.out.println("Numero a encontrar " + num);
+            System.out.println(Arreglo.binarySearch(arr, num));
         } catch (NumberNotFound e) {
             System.out.println("No se encontro el numero");
         }
@@ -35,7 +36,7 @@ class Arreglo {
         int last = arreglo.length;
         int half = arreglo.length / 2;
 
-        while (half - begin > 0) {
+        while (half - begin > 0 || arreglo.arr[half] == dato) {
             pasos++;
             if (arreglo.arr[half] < dato) {
                 begin = half;
