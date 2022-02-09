@@ -37,20 +37,20 @@ public class Arreglo {
      */
     public static int binarySearch(Arreglo arreglo, int dato) throws NumberNotFound {
         int begin = 0, pasos = 0;
-        int last = arreglo.length;
-        int half = arreglo.length / 2;
+        int end = arreglo.length - 1;
 
-        while (half - begin > 0 || arreglo.arr[half] == dato) {
-            pasos++;
-            if (arreglo.arr[half] < dato) {
-                begin = half;
-            } else if (arreglo.arr[half] > dato) {
-                last = half;
+        while (begin <= end) {
+            int middle = (end + begin) / 2;
+
+            if (arreglo.arr[middle] < dato) {
+                begin = middle + 1;
+            } else if (arreglo.arr[middle] > dato) {
+                end = middle - 1;
             } else {
                 return pasos;
             }
 
-            half = (last - begin) / 2 + begin;
+            pasos++;
         }
 
         throw new NumberNotFound(dato, pasos);
