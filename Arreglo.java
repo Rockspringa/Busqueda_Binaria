@@ -41,6 +41,7 @@ public class Arreglo {
 
         while (begin <= end) {
             int middle = (end + begin) / 2;
+            pasos++;
 
             if (arreglo.arr[middle] < dato) {
                 begin = middle + 1;
@@ -49,8 +50,6 @@ public class Arreglo {
             } else {
                 return pasos;
             }
-
-            pasos++;
         }
 
         throw new NumberNotFound(dato, pasos);
